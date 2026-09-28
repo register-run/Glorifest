@@ -110,7 +110,7 @@ body{font-family:var(--font);color:var(--ink);background:#fff;-webkit-font-smoot
 .menu-button[aria-expanded="true"] .m-line:nth-child(2){opacity:0;transform:translate(-50%,-50%) scaleX(.3)}
 .menu-button[aria-expanded="true"] .m-line:nth-child(3){top:calc(50% - 1px);transform:translate(-50%,-50%) rotate(-45deg)}
 
-/* ============ 3. BANNER (FIXED — ikut rasio asli gambar) ============ */
+/* ============ 3. BANNER (ikut rasio asli gambar — tanpa crop) ============ */
 .banner-wrap{max-width:1040px;margin-inline:auto}
 .banner{position:relative;overflow:hidden;
   background:linear-gradient(110deg,#dfe3f5 25%,#f2f4fd 50%,#dfe3f5 75%);
@@ -441,18 +441,23 @@ h1[data-event-title]{margin:12px 0 22px;font-size:clamp(22px,5.4vw,28px);line-he
 </header>
 
 <main id="main">
-  <!-- ================= BANNER (FIXED) ================= -->
+  <!-- ================= BANNER ================= -->
   <div class="banner-wrap">
     <figure class="banner" id="banner">
-      <!-- width/height hanya perkiraan rasio agar layout stabil saat loading;
-           akan disinkronkan otomatis dengan ukuran asli oleh JS -->
+      <!-- width/height = perkiraan rasio file asli agar layout stabil saat loading;
+           GANTI sesuai dimensi asli banner.png kamu. JS menyinkronkan otomatis setelah termuat. -->
       <img id="bannerImg" src="banner.png"
            alt="Poster GLORIFEST FESTARIA 2026 — 10 October 2026, SMA Global Mandiri Cibubur"
-           width="1200" height="420" fetchpriority="high" decoding="async">
+           width="1400" height="520" fetchpriority="high" decoding="async">
       <figcaption class="banner-fallback" aria-hidden="true">
         <div><strong>GLORIFEST "FESTARIA 2026"</strong><span>10 October 2026 · SMA Global Mandiri Cibubur</span></div>
       </figcaption>
     </figure>
+    <!-- Fail-safe: jika JS mati/diblokir, banner tetap tampil -->
+    <noscript><style>
+    .banner{animation:none!important;background:transparent!important}
+    .banner img{opacity:1!important}
+    </style></noscript>
   </div>
 
   <!-- ================= KONTEN ================= -->
@@ -729,6 +734,30 @@ const $$=(s,c=document)=>Array.from((c||document).querySelectorAll(s));
 const motionOK=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fmtIDR=n=>'Rp'+Number(n||0).toLocaleString('id-ID');
 
+/* ================================================================
+   BANNER: dijalankan PALING AWAL (BUGFIX — kebal dari error kode
+   lain di bawahnya). Menangani 3 kondisi: loading / sukses / gagal.
+   ================================================================ */
+(function(){
+  const banner=$('#banner'),img=$('#bannerImg');if(!banner||!img)return;
+  const done=()=>{
+    banner.classList.add('is-loaded');
+    /* sinkronkan rasio placeholder dengan ukuran asli → anti layout shift */
+    if(img.naturalWidth){
+      img.setAttribute('width',img.naturalWidth);
+      img.setAttribute('height',img.naturalHeight);
+    }
+  };
+  const fail=()=>{banner.classList.add('is-error');banner.classList.remove('is-loaded');};
+  if(img.complete){
+    /* gambar sudah termuat ATAU sudah gagal sebelum JS jalan (cache/404 cepat) */
+    (img.naturalWidth>0)?done():fail();
+  }else{
+    img.addEventListener('load',done,{once:true});
+    img.addEventListener('error',fail,{once:true});
+  }
+})();
+
 /* ---------- Data event (bisa ditimpa via window.ARTATIX_EVENT) ---------- */
 const DEFAULT_EVENT={
   title:'GLORIFEST "FESTARIA 2026"',
@@ -743,20 +772,21 @@ const DEFAULT_EVENT={
 };
 const EVENT=Object.assign({},DEFAULT_EVENT,window.ARTATIX_EVENT||{});
 
-/* ---------- Hydration ---------- */
+/* ---------- Hydration (BUGFIX: semua elemen dengan atribut sama ikut diperbarui) ---------- */
 function hydrate(){
-  const set=(sel,v)=>{const el=$(sel);if(el)el.textContent=v;};
-  set('[data-event-title]',EVENT.title);
-  set('[data-event-date]',EVENT.date);
-  set('[data-event-time]',EVENT.time);
-  set('[data-event-venue]',EVENT.venue);
-  set('[data-event-city]',EVENT.city);
-  set('[data-organizer]',EVENT.organizer);
-  set('[data-price-from]',fmtIDR(EVENT.priceFrom));
+  const put=(sel,v)=>$$(sel).forEach(el=>el.textContent=v);
+  put('[data-event-title]',EVENT.title);
+  put('[data-event-date]',EVENT.date);
+  put('[data-event-time]',EVENT.time);
+  put('[data-event-venue]',EVENT.venue);
+  put('[data-event-city]',EVENT.city);
+  put('[data-organizer]',EVENT.organizer);
+  put('[data-price-from]',fmtIDR(EVENT.priceFrom));
   $$('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
 }
 
-/* ---------- i18n (ID / EN) ---------- */
+/* ---------- i18n (ID / EN) — bahasa tersimpan & disinkronkan dengan halaman tiket ---------- */
+const LANG_KEY='gf_lang';
 const I18N={
   id:{home:'Beranda',tickets:'Pesan Tiket',desc:'Deskripsi',terms:'Syarat & Ketentuan',music:'Musik',
       details:'Detail Acara',organizerTitle:'Penyelenggara',social:'Media Sosial',follow:'Ikuti Kami',
@@ -794,10 +824,12 @@ const I18N={
       fAbout:'The official ticketing platform for your favorite events — safe, fast & trusted.'}
 };
 let LANG='id';
+try{if(localStorage.getItem(LANG_KEY)==='en')LANG='en';}catch(e){}
 const t=k=>(I18N[LANG]&&I18N[LANG][k])||I18N.id[k]||k;
-function applyLang(lang){
+function applyLang(lang,silent){
   LANG=I18N[lang]?lang:'id';
   document.documentElement.lang=LANG;
+  try{localStorage.setItem(LANG_KEY,LANG);}catch(e){}
   $$('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n);});
   $$('[data-i18n-placeholder]').forEach(el=>{el.placeholder=t(el.dataset.i18nPlaceholder);});
   $$('[data-i18n-aria]').forEach(el=>{el.setAttribute('aria-label',t(el.dataset.i18nAria));});
@@ -808,6 +840,7 @@ function applyLang(lang){
   if(typeof refreshSheet==='function')refreshSheet();
   if(typeof renderSearch==='function')renderSearch();
   syncFollow();
+  if(!silent)toast(t('langToast'));
 }
 
 /* ---------- Toast ---------- */
@@ -821,14 +854,17 @@ function toast(msg){
   while(toastBox.children.length>3)toastBox.firstChild.remove();
 }
 
-/* ---------- Layer manager (drawer / search / sheet) ---------- */
+/* ---------- Layer manager (BUGFIX: race condition buka-tutup cepat) ---------- */
 const FOCUSABLE='a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
 let openLayers=[];
 const setExpanded=(trg,v)=>{if(trg)trg.setAttribute('aria-expanded',String(v));};
 function openLayer(id,trigger){
   const layer=document.getElementById(id);if(!layer)return;
-  layer._trigger=trigger||null;setExpanded(trigger,true);
-  layer.hidden=false;openLayers.push(layer);
+  clearTimeout(layer._hideT); /* batalkan penutupan tertunda dari sesi sebelumnya */
+  const trg=trigger||layer._trigger||null;
+  layer._trigger=trg;setExpanded(trg,true);
+  if(!openLayers.includes(layer))openLayers.push(layer);
+  layer.hidden=false;
   document.documentElement.classList.add('no-scroll');
   requestAnimationFrame(()=>requestAnimationFrame(()=>layer.classList.add('open')));
   const f=$(FOCUSABLE,layer);
@@ -840,7 +876,9 @@ function closeLayer(layer){
   openLayers=openLayers.filter(l=>l!==layer);
   if(!openLayers.length)document.documentElement.classList.remove('no-scroll');
   const trg=layer._trigger;setExpanded(trg,false);layer._trigger=null;
-  setTimeout(()=>{layer.hidden=true;if(trg)trg.focus({preventScroll:true});},motionOK?320:0);
+  clearTimeout(layer._hideT);
+  layer._hideT=setTimeout(()=>{layer.hidden=true;},motionOK?320:0);
+  if(trg)setTimeout(()=>{trg.focus({preventScroll:true});},motionOK?330:0);
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&openLayers.length){closeLayer(openLayers[openLayers.length-1]);return;}
@@ -858,7 +896,7 @@ document.addEventListener('keydown',e=>{
 /* ---------- Trigger header ---------- */
  $('#menuBtn')?.addEventListener('click',e=>openLayer('drawer',e.currentTarget));
  $('#searchBtn')?.addEventListener('click',e=>openLayer('searchLayer',e.currentTarget));
- $('#langBtn')?.addEventListener('click',()=>{const next=LANG==='id'?'en':'id';applyLang(next);toast(t('langToast'));});
+ $('#langBtn')?.addEventListener('click',()=>applyLang(LANG==='id'?'en':'id'));
 
 /* ---------- Scrollspy, header shadow, to-top ---------- */
 function headerOffset(){const h=$('.event-header');return (h?h.offsetHeight:0)+14;}
@@ -894,31 +932,16 @@ if('IntersectionObserver' in window){
   $$('.reveal').forEach(el=>ro.observe(el));
 }else{$$('.reveal').forEach(el=>el.classList.add('in'));}
 
-/* ---------- Banner: skeleton + fallback (FIXED) ---------- */
-(function(){
-  const banner=$('#banner'),img=$('#bannerImg');if(!banner||!img)return;
-  const done=()=>{
-    banner.classList.add('is-loaded');
-    /* sinkronkan rasio placeholder dengan ukuran asli → anti layout shift */
-    if(img.naturalWidth){
-      img.setAttribute('width',img.naturalWidth);
-      img.setAttribute('height',img.naturalHeight);
-    }
-  };
-  const fail=()=>{banner.classList.add('is-error');banner.classList.remove('is-loaded');};
-  if(img.complete){
-    /* gambar sudah termuat ATAU sudah gagal sebelum JS jalan */
-    (img.naturalWidth>0)?done():fail();
-  }else{
-    img.addEventListener('load',done,{once:true});
-    img.addEventListener('error',fail,{once:true});
-  }
-})();
-
-/* ---------- Fallback gambar generik ---------- */
+/* ---------- Fallback gambar generik (logo-promotor & thumbnail sheet) ---------- */
  $$('img[data-fallback]').forEach(img=>img.addEventListener('error',()=>{
   const w=img.closest('[data-fallback-wrap]');if(w)w.classList.add('show-fallback');
 }));
+/* kalau gambar sudah gagal termuat sebelum JS jalan */
+ $$('img[data-fallback]').forEach(img=>{
+  if(img.complete&&img.naturalWidth===0){
+    const w=img.closest('[data-fallback-wrap]');if(w)w.classList.add('show-fallback');
+  }
+});
 
 /* ---------- Search ---------- */
 const SEARCH_ITEMS=[
@@ -958,6 +981,7 @@ function renderSearch(){
 });
 
 /* ---------- Bottom Sheet: pilih tiket ---------- */
+const MAXQ=10; /* disamakan dengan halaman kategori tiket */
 const qty={};EVENT.tickets.forEach(tk=>qty[tk.id]=0);
 const list=$('#ticketList');
 function refreshSheet(){
@@ -967,7 +991,7 @@ function refreshSheet(){
     card.classList.toggle('selected',n>0);
     const btns=$$('.stepper button',card);
     if(btns[0])btns[0].disabled=n<=0;
-    if(btns[1])btns[1].disabled=n>=8;
+    if(btns[1])btns[1].disabled=n>=MAXQ;
   });
   const total=EVENT.tickets.reduce((s,tk)=>s+(qty[tk.id]||0)*tk.price,0);
   const totalEl=$('#sheetTotal');if(totalEl)totalEl.textContent=fmtIDR(total);
@@ -976,8 +1000,8 @@ function refreshSheet(){
 }
 function stepButton(sym,id,delta){
   const b=document.createElement('button');b.type='button';b.textContent=sym;
-  b.setAttribute('aria-label',(delta>0?'Tambah ':'Kurang ')+id);
-  b.addEventListener('click',()=>{qty[id]=Math.min(8,Math.max(0,(qty[id]||0)+delta));refreshSheet();});
+  b.setAttribute('aria-label',(delta>0?'+':'-')+' '+id);
+  b.addEventListener('click',()=>{qty[id]=Math.min(MAXQ,Math.max(0,(qty[id]||0)+delta));refreshSheet();});
   return b;
 }
 function renderTickets(){
@@ -1049,7 +1073,7 @@ document.addEventListener('click',e=>{
 
 /* ---------- Init ---------- */
 hydrate();
-applyLang('id');
+applyLang(LANG,true); /* pakai bahasa tersimpan, tanpa toast saat load */
 renderTickets();
 renderSearch();
 updateSpy();
