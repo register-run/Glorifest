@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pilih Kategori Tiket | Artatix</title>
+<meta name="theme-color" content="#17256f">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Kategori tiket GLORIFEST FESTARIA 2026 — stok terbatas, hampir sold out! Pilih tiket dan lanjutkan pemesanan di Artatix.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pilih Kategori Tiket | Artatix">
+<meta property="og:description" content="Kategori tiket GLORIFEST FESTARIA 2026 — Tiket hampir sold out!">
+<meta property="og:image" content="banner.png">
+<meta property="og:image:alt" content="Poster GLORIFEST FESTARIA 2026">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="prefetch" href="form.html" as="document">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Event","name":"GLORIFEST \"FESTARIA 2026\"","startDate":"2026-10-10T15:00:00+07:00","endDate":"2026-10-10T23:00:00+07:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"SMA Global Mandiri Cibubur","address":"Cibubur, Jawa Barat"},"image":["banner.png"],"organizer":{"@type":"Organization","name":"Artatix"},"offers":{"@type":"AggregateOffer","priceCurrency":"IDR","lowPrice":"350000","availability":"https://schema.org/InStock"}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
+:root{--navy:#17256f;--navy-2:#263da5;--blue:#5366f2;--blue-dark:#3f51d8;--ink:#121936;--muted:#7f89a6;--panel:#eef2ff;--line:#dfe5f5;--red:#e5484d;--red-bg:#fff0f1;--green:#0b9d55;--green-bg:#e9fbf1;--hot:#d92638;--white:#fff;--shadow:0 18px 55px rgba(23,37,111,.12)}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Poppins',system-ui,sans-serif;background:radial-gradient(900px 420px at 50% -160px,rgba(83,102,242,.20),transparent 70%),linear-gradient(180deg,#f8faff 0,#fff 34%,#fff 100%);color:var(--ink);transition:opacity .24s ease;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+body.leaving{opacity:0}
+::selection{background:#dfe5fb}
+:focus-visible{outline:3px solid rgba(67,83,224,.35);outline-offset:2px;border-radius:6px}
+img{display:block}
+button{font-family:inherit;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{width:100%;max-width:540px;margin:0 auto;padding-left:20px;padding-right:20px}
+
+/* ===== Topbar ===== */
+.topbar{position:relative;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,229,245,.72);z-index:30}
+.bar-inner{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:42px;height:42px;flex:none;border-radius:12px;box-shadow:0 8px 22px rgba(23,37,111,.18);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.brand:hover .logo-mark{transform:rotate(-6deg) scale(1.06)}
+.brand strong{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.7px}
+.lang{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#f7f9ff,#eef2ff);border:1px solid #e0e6f6;border-radius:999px;padding:9px 15px;font-weight:700;font-size:14px;color:var(--navy);box-shadow:0 8px 22px rgba(23,37,111,.08);transition:transform .12s,box-shadow .2s;-webkit-user-select:none;user-select:none}
+.lang:hover{box-shadow:0 10px 26px rgba(23,37,111,.14)}
+.lang:active{transform:scale(.95)}
+.flag{width:20px;height:20px;border-radius:50%;background:linear-gradient(180deg,#f0483e 0 50%,#fff 50% 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);flex:none}
+.flag--en{background:
+ linear-gradient(45deg,transparent 45%,#fff 45% 55%,transparent 55%),
+ linear-gradient(135deg,transparent 45%,#fff 45% 55%,transparent 55%),
+ linear-gradient(0deg,transparent 41%,#fff 41% 59%,transparent 59%),
+ linear-gradient(90deg,transparent 41%,#fff 41% 59%,transparent 59%),#26339B;
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+
+/* ===== Progress steps (premium) ===== */
+.progress{position:relative;background:linear-gradient(135deg,#111d59,#263da5 58%,#5366f2);box-shadow:0 12px 30px rgba(23,37,111,.18);overflow:hidden}
+.progress::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:sheenLine 4.5s linear infinite;pointer-events:none}
+@keyframes sheenLine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.steps{list-style:none;display:flex;align-items:center;padding-top:12px;padding-bottom:12px;gap:6px}
+.step{display:flex;align-items:center;gap:8px;flex:none;min-width:0}
+.s-dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;color:rgba(255,255,255,.85);border:2px solid rgba(255,255,255,.45);flex:none;transition:background .3s,color .3s,border-color .3s,box-shadow .3s}
+.step.active .s-dot{background:#fff;color:var(--navy);border-color:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.18)}
+.s-label{color:rgba(255,255,255,.55);font-weight:600;font-size:13.5px;white-space:nowrap;transition:color .3s}
+.step.active .s-label{color:#fff;font-weight:700;font-size:15px}
+.s-sep{display:flex;justify-content:center;flex:1;min-width:12px}
+.s-sep svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+@media(max-width:480px){
+ .step:not(.active) .s-label{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .s-dot{width:28px;height:28px;font-size:13px}
+}
+
+/* ===== Main & Banner (FIXED: fallback + anti layout shift + no-JS fail-safe) ===== */
+main{padding-bottom:205px}
+.banner-box{position:relative;border-radius:26px;overflow:hidden;margin-top:22px;box-shadow:0 22px 50px rgba(23,37,111,.18),inset 0 2px 0 rgba(255,255,255,.85);outline:1px solid rgba(83,102,242,.10);
+ background:linear-gradient(110deg,#dfe3f5 25%,#f2f4fd 50%,#dfe3f5 75%);background-size:200% 100%;animation:shimmer 1.5s linear infinite}
+.banner-box img{width:100%;height:auto;opacity:0;transition:opacity .45s ease}
+.banner-box.is-loaded{animation:none;background:transparent}
+.banner-box.is-loaded img{opacity:1}
+.banner-box.is-error{animation:none;aspect-ratio:2.6/1;min-height:170px;background:linear-gradient(120deg,#FF4FA3,#8A4BFF 48%,#22C8E8)}
+.banner-box.is-error img{display:none}
+.banner-fb{display:none;position:absolute;inset:0;place-items:center;text-align:center;color:#fff;padding:18px}
+.banner-box.is-error .banner-fb{display:grid}
+.banner-fb strong{font-size:clamp(17px,4vw,24px);font-weight:800;line-height:1.3;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.banner-fb span{display:block;margin-top:5px;font-weight:700;font-size:12.5px;opacity:.92}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+/* ===== Ticker ===== */
+.ticker{position:relative;overflow:hidden;margin-top:20px;border-radius:18px;background:linear-gradient(90deg,#d92638,#ff7a18,#d92638);background-size:220% 100%;box-shadow:0 10px 26px rgba(217,38,56,.32),inset 0 0 0 1px rgba(255,255,255,.25);animation:rise .55s cubic-bezier(.2,.7,.3,1) backwards,tickerBg 6s linear infinite}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:34px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,rgba(217,38,56,.95),transparent)}
+.ticker::after{right:0;background:linear-gradient(-90deg,rgba(217,38,56,.95),transparent)}
+.ticker:hover .ticker-track,.ticker:focus-within .ticker-track{animation-play-state:paused}
+.ticker-track{display:flex;width:max-content;padding:12px 0;will-change:transform;animation:tickerMove 15s linear infinite}
+.t-group{display:flex;align-items:center;flex:none}
+.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 22px;color:#fff;font-size:14.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.t-warn{display:inline-block;font-size:16px;animation:blink .85s ease-in-out infinite}
+@keyframes tickerMove{to{transform:translateX(-50%)}}
+@keyframes tickerBg{to{background-position:220% 0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ===== Heading (BUGFIX: deklarasi ganda dihapus) ===== */
+.category-icon{width:46px;height:46px;display:grid;place-items:center;flex:none;border-radius:15px;background:linear-gradient(145deg,#eef1ff,#dfe4ff);box-shadow:0 9px 22px rgba(67,83,224,.18),inset 0 1px 0 rgba(255,255,255,.95);border:1px solid rgba(67,83,224,.16);transform:rotate(-3deg)}
+.category-icon svg{width:29px;height:29px;fill:none;stroke:#4353e0;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px rgba(67,83,224,.16))}
+.category-icon svg path:first-child{fill:rgba(67,83,224,.12)}
+.heading{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#6577ff,#4353e0 62%,#3343c9);color:#fff;font-size:16px;font-weight:800;padding:12px 20px;border-radius:999px;margin:26px 0 16px;box-shadow:0 12px 26px rgba(67,83,224,.30),inset 0 1px 0 rgba(255,255,255,.28)}
+
+/* ===== Kartu tiket ===== */
+.tickets{display:grid;gap:18px}
+.card{position:relative;background:linear-gradient(145deg,#f3f6ff,#e9eeff);border:1px solid rgba(83,102,242,.08);border-radius:28px;padding:16px 16px 18px;box-shadow:0 14px 34px rgba(23,37,111,.08);animation:rise .5s cubic-bezier(.2,.7,.3,1) backwards}
+.card.is-available{border-color:rgba(16,183,106,.55);box-shadow:0 14px 36px rgba(16,183,106,.14)}
+.card.is-off{filter:grayscale(.4) opacity(.85)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.card.is-on::after{content:"✓";position:absolute;top:18px;right:18px;width:27px;height:27px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800;box-shadow:0 5px 12px rgba(14,159,86,.4);animation:pop .3s cubic-bezier(.2,.9,.3,1.4) backwards}
+@keyframes pop{from{transform:scale(0)}}
+.badge-row{display:flex;align-items:center;gap:8px;margin:2px 0 12px 2px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;font-size:15px;font-weight:600}
+.badge.sold_out,.badge.full_booked{color:var(--red);background:var(--red-bg)}
+.badge.available{color:var(--green);background:var(--green-bg);animation:glow 1.8s ease-in-out infinite}
+.badge.available i{width:8px;height:8px;border-radius:50%;background:#10d76a;box-shadow:0 0 8px 2px rgba(16,215,106,.95)}
+@keyframes glow{0%,100%{box-shadow:0 0 6px rgba(18,183,106,.35)}50%{box-shadow:0 0 20px rgba(18,183,106,.85)}}
+.chip-tag{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700;color:#8a5a00;background:linear-gradient(90deg,#fff6dc,#ffedbb);box-shadow:inset 0 0 0 1.5px rgba(214,158,26,.45)}
+.chip-hot{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:800;color:var(--hot);background:#fff1f1;box-shadow:inset 0 0 0 1.5px rgba(217,38,56,.35)}
+.tcard{background:rgba(255,255,255,.96);border:1px solid rgba(223,229,245,.9);border-radius:20px;padding:18px 20px 20px;box-shadow:0 4px 14px rgba(23,37,111,.06)}
+.card.is-on .tcard{box-shadow:0 0 0 2px #c6cdf6,0 10px 24px rgba(67,83,224,.16)}
+.tname{font-size:18px;font-weight:700;line-height:1.35;letter-spacing:.2px}
+.tdivider{position:relative;border-top:2px dashed var(--line);margin:18px -20px}
+.notch{position:absolute;top:-11px;width:22px;height:22px;border-radius:50%;background:var(--panel)}
+.notch.l{left:-11px}
+.notch.r{right:-11px}
+.tfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;row-gap:12px;flex-wrap:wrap;margin-top:18px}
+.tprice{font-size:23px;font-weight:800;letter-spacing:-.3px;color:var(--navy);font-variant-numeric:tabular-nums}
+.qty-zone{display:flex;align-items:center}
+.sub-line{flex-basis:100%;text-align:right;font-size:12.5px;font-weight:700;color:var(--blue-dark);animation:rise .3s ease backwards}
+.stockbar{height:7px;margin-top:16px;border-radius:99px;background:#e9edf8;overflow:hidden}
+.stockbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#ffb020,#ff7a18,#d92638)}
+
+/* ===== Stepper ===== */
+.picker,.step-btn,.buy{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.picker{border:0;background:var(--blue);color:#fff;font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px;box-shadow:0 4px 12px rgba(67,83,224,.3);transition:transform .15s,background .2s}
+.picker:hover{background:var(--blue-dark)}
+.picker:active{transform:scale(.95)}
+.stepper{display:flex;align-items:center;gap:10px}
+.step-btn{width:38px;height:38px;border-radius:50%;border:2px solid #dde3f6;background:#fff;color:var(--navy);font-size:20px;font-weight:700;line-height:1;display:grid;place-items:center;transition:border-color .15s,color .15s,opacity .15s,transform .15s}
+.step-btn:hover:not(:disabled){border-color:var(--blue);color:var(--blue)}
+.step-btn:active:not(:disabled){transform:scale(.9)}
+.step-btn:disabled{opacity:.35;cursor:not-allowed}
+.qty-val{min-width:26px;text-align:center;font-weight:700;font-size:17px}
+.qty-val.bump{animation:bump .25s ease}
+@keyframes bump{50%{transform:scale(1.3)}}
+.off-pill{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:#f1f3f9;color:#8b93a8;font-size:13px;font-weight:600}
+
+/* ===== Footer ===== */
+.footer{margin-top:50px;text-align:center;padding:0 0 14px}
+.f-brand{display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:18px}
+.f-brand .logo-mark{width:46px;height:46px;border-radius:13px}
+.f-brand span{font-size:27px;font-weight:800;color:var(--navy);letter-spacing:-.7px}
+.f-help{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px}
+.f-contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:520px;margin:0 auto}
+.f-contact a{min-height:66px;box-sizing:border-box;display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:10px 16px;border:1px solid rgba(224,229,243,.95);border-radius:18px;text-decoration:none;color:var(--ink);font-weight:750;font-size:14px;background:linear-gradient(145deg,#fff,#f7f9ff);box-shadow:0 9px 24px rgba(30,47,105,.07),inset 0 1px 0 rgba(255,255,255,.9);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.f-contact a:hover{transform:translateY(-2px);border-color:rgba(67,83,224,.3);box-shadow:0 13px 30px rgba(30,47,105,.12),inset 0 1px 0 rgba(255,255,255,.95)}
+.f-contact a:active{transform:translateY(0) scale(.98)}
+.f-ico{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none;color:#fff;box-shadow:0 7px 16px rgba(20,35,90,.15)}
+.f-ico.wa{background:linear-gradient(145deg,#28e17a,#0bbf63)}
+.f-ico.mail{background:linear-gradient(145deg,#6678ff,#4353e0)}
+.f-ico svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.f-ico.wa svg{stroke-width:1.8}
+.f-copyline{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left;line-height:1.25}
+.f-copyline small{margin-top:3px;font-size:11px;font-weight:650;color:var(--muted)}
+.f-copyline strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.f-sep{border:0;border-top:1px solid #e7eaf3;margin:30px 0 18px}
+.f-copy{font-size:13px;color:var(--muted);font-weight:550}
+@media (max-width:560px){.f-contact{grid-template-columns:1fr;max-width:390px}.f-contact a{min-height:64px}}
+
+/* ===== Sticky bar ===== */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid #eef0f7;box-shadow:0 -8px 24px rgba(23,37,84,.08);padding-bottom:env(safe-area-inset-bottom);animation:slideUp .45s cubic-bezier(.2,.7,.3,1) backwards .15s}
+@keyframes slideUp{from{transform:translateY(100%)}}
+.sticky::before{content:"";position:absolute;top:-2px;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 4%,#6577ff 25%,#4353e0 50%,#6577ff 75%,transparent 96%);box-shadow:0 0 18px rgba(67,83,224,.38)}
+.sticky-inner{padding-top:13px;padding-bottom:15px}
+.p-row{display:flex;align-items:center;justify-content:space-between}
+.p-label{font-size:15.5px;font-weight:600;color:#3c4257}
+.p-price{font-size:23px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.buy{position:relative;overflow:hidden;margin-top:12px;width:100%;border:0;border-radius:16px;padding:16px;font-size:17px;font-weight:800;color:#fff;background:linear-gradient(135deg,#6577ff 0,#4353e0 52%,#3343c9 100%);box-shadow:0 12px 28px rgba(67,83,224,.36),inset 0 1px 0 rgba(255,255,255,.30);display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s,box-shadow .2s,opacity .2s}
+.buy::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);animation:buttonShine 3.8s ease-in-out infinite}
+.buy svg{position:relative;width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.buy span{position:relative}
+@keyframes buttonShine{0%,58%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(120%) skewX(-18deg)}}
+.buy:disabled{background:#aeb9f0;box-shadow:none;cursor:not-allowed}
+.buy:disabled::before{animation:none}
+.buy:not(:disabled):hover{box-shadow:0 10px 24px rgba(67,83,224,.42)}
+.buy:not(:disabled):hover svg{transform:translateX(3px)}
+.buy:not(:disabled):active{transform:scale(.99)}
+
+/* ===== Toast ===== */
+.toast{position:fixed;left:50%;bottom:185px;transform:translate(-50%,14px) scale(.97);z-index:60;background:#1c2440;color:#fff;font-size:14px;font-weight:500;padding:11px 18px;border-radius:12px;max-width:calc(100vw - 40px);text-align:center;opacity:0;pointer-events:none;box-shadow:0 12px 30px rgba(0,0,0,.28);transition:opacity .25s,transform .25s}
+.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+
+@media (hover:hover){
+.tcard{transition:box-shadow .2s ease,transform .2s ease}
+.card:hover .tcard{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,52,143,.12)}
+.card.is-on:hover .tcard{box-shadow:0 0 0 2px #c6cdf6,0 12px 26px rgba(67,83,224,.2)}
+}
+@media (max-width:380px){.wrap{padding-left:14px;padding-right:14px}.t-item{padding:0 14px;font-size:12px}.chip-hot,.chip-tag{font-size:12px;padding:6px 12px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Logo vektor premium (konsisten dengan halaman event) -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8B96FF"/><stop offset=".5" stop-color="#4A54B1"/><stop offset="1" stop-color="#262C7E"/>
+    </linearGradient>
+    <linearGradient id="gShine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <symbol id="logoMark" viewBox="0 0 40 40">
+      <rect x="1.5" y="1.5" width="37" height="37" rx="11.5" fill="url(#gMark)"/>
+      <rect x="1.5" y="1.5" width="37" height="37" rx="11.5" fill="url(#gShine)"/>
+      <path d="M28.5 10v20" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-dasharray="2.6 3.4" stroke-linecap="round"/>
+      <path d="M11.5 28.5 19 10.5l7.5 18" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14.7 22.4h8.6" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap bar-inner">
+    <a class="brand" href="index.html" aria-label="Artatix beranda">
+      <svg class="logo-mark" aria-hidden="true"><use href="#logoMark"/></svg>
+      <strong>Artatix</strong>
+    </a>
+    <button class="lang" id="langBtn" type="button" aria-label="Ganti bahasa">
+      <span class="flag" id="langFlag" aria-hidden="true"></span><span id="langCode">ID</span>
+    </button>
+  </div>
+</header>
+
+<nav class="progress" aria-label="Langkah pemesanan">
+  <ol class="steps wrap">
+    <li class="step active" aria-current="step"><span class="s-dot">1</span><span class="s-label" data-step="0">Pilih Kategori</span></li>
+    <li class="s-sep" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></li>
+    <li class="step"><span class="s-dot">2</span><span class="s-label" data-step="1">Data Pembeli</span></li>
+    <li class="s-sep" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></li>
+    <li class="step"><span class="s-dot">3</span><span class="s-label" data-step="2">Pembayaran</span></li>
+    <li class="s-sep" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></li>
+    <li class="step"><span class="s-dot">4</span><span class="s-label" data-step="3">E-Tiket</span></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+  <!-- BANNER: width/height = perkiraan rasio file asli agar layout stabil saat loading.
+       Ganti angkanya sesuai dimensi asli banner.png kamu (mis. 1920×640).
+       JS akan menyinkronkan otomatis dengan ukuran asli setelah gambar termuat. -->
+  <figure class="banner-box" id="bannerBox">
+    <img class="banner" id="bannerImg" src="banner.png" alt="GLORIFEST FESTARIA 2026 — 10 Oktober 2026, SMA Global Mandiri Cibubur" width="1400" height="520" fetchpriority="high" decoding="async">
+    <figcaption class="banner-fb"><div><strong>GLORIFEST FESTARIA 2026</strong><span>10 Oktober 2026 · SMA Global Mandiri Cibubur</span></div></figcaption>
+  </figure>
+  <!-- Fail-safe: jika JS mati/diblokir, banner tetap tampil -->
+  <noscript><style>
+  .banner-box{animation:none!important;background:transparent!important}
+  .banner-box img{opacity:1!important}
+  </style></noscript>
+
+  <aside class="ticker" aria-label="Peringatan stok tiket">
+    <p class="sr-only" id="tickerSr">Peringatan: tiket hampir sold out. Amankan tiketmu sekarang sebelum kehabisan.</p>
+    <div class="ticker-track" aria-hidden="true">
+      <div class="t-group">
+        <span class="t-item"><span class="t-warn">⚠️</span><span data-tick="0">TIKET HAMPIR SOLD OUT</span></span>
+        <span class="t-item"><span data-tick="1">🔥 STOK TERBATAS</span></span>
+        <span class="t-item"><span class="t-warn">⚠️</span><span data-tick="2">AMANKAN TIKETMU SEKARANG</span></span>
+      </div>
+      <div class="t-group">
+        <span class="t-item"><span class="t-warn">⚠️</span><span data-tick="0">TIKET HAMPIR SOLD OUT</span></span>
+        <span class="t-item"><span data-tick="1">🔥 STOK TERBATAS</span></span>
+        <span class="t-item"><span class="t-warn">⚠️</span><span data-tick="2">AMANKAN TIKETMU SEKARANG</span></span>
+      </div>
+    </div>
+  </aside>
+
+  <h1 class="heading">
+    <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5.5 10.25A2.75 2.75 0 0 1 8.25 7.5h15.5a2.75 2.75 0 0 1 2.75 2.75v2.1a3.35 3.35 0 0 0 0 7.3v2.1a2.75 2.75 0 0 1-2.75 2.75H8.25a2.75 2.75 0 0 1-2.75-2.75v-2.1a3.35 3.35 0 0 0 0-7.3v-2.1Z"/><path d="M16 10.5v2.1m0 3.4v2.1m0 3.4v.1"/></svg></span>
+    <span data-i18n-heading>Kategori Tiket</span>
+  </h1>
+
+  <section id="ticketList" class="tickets" aria-label="Daftar kategori tiket"></section>
+
+  <footer class="footer">
+    <div class="f-brand">
+      <svg class="logo-mark" aria-hidden="true"><use href="#logoMark"/></svg>
+      <span>Artatix</span>
+    </div>
+    <p class="f-help" data-f-help>Butuh bantuan? Hubungi kami:</p>
+    <div class="f-contact">
+      <a href="https://wa.me/6282137676220" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Artatix">
+        <span class="f-ico wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.6-3.9A8 8 0 1 1 20 11.5Z"/><path d="M8.4 8.1c.2-.4.5-.4.8-.3l1 .8c.2.2.3.4.1.7l-.5.7c.4.8 1 1.4 1.8 1.8l.7-.5c.2-.2.5-.1.7.1l.8 1c.2.3.1.6-.3.8-.5.3-1.1.4-1.7.2-2.4-.7-4.3-2.6-5-5-.2-.6-.1-1.2.2-1.7Z"/></svg></span>
+        <span class="f-copyline"><strong>WhatsApp</strong><small data-f-wa>Chat Customer Service</small></span>
+      </a>
+      <a href="mailto:cs@artatix.co.id" aria-label="Kirim email ke Customer Service Artatix">
+        <span class="f-ico mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7 7.5 5.3L19.5 7"/></svg></span>
+        <span class="f-copyline"><strong>E-mail</strong><small>cs@artatix.co.id</small></span>
+      </a>
+    </div>
+    <hr class="f-sep">
+    <p class="f-copy" data-f-copy>© 2026 Artatix. Hak Cipta Dilindungi.</p>
+  </footer>
+</main>
+
+<div class="sticky">
+  <div class="wrap sticky-inner">
+    <div class="p-row" aria-live="polite"><span class="p-label" id="barLabel">Harga Mulai dari</span><strong class="p-price" id="barPrice">Rp350.000</strong></div>
+    <button class="buy" id="checkoutBtn" type="button" disabled><span id="buyLabel">Beli Sekarang</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $  = id => document.getElementById(id);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  /* ================================================================
+     BANNER: dijalankan PALING AWAL agar kebal dari error kode lain
+     (Patch 3) — menangani 3 kondisi: loading / sukses / gagal (404)
+     ================================================================ */
+  (function () {
+    const box = $('bannerBox'), img = $('bannerImg');
+    if (!box || !img) return;
+    const ok = () => {
+      box.classList.add('is-loaded');
+      /* sinkronkan rasio placeholder dengan ukuran asli → anti layout shift */
+      if (img.naturalWidth) {
+        img.setAttribute('width', img.naturalWidth);
+        img.setAttribute('height', img.naturalHeight);
+      }
+    };
+    const bad = () => { box.classList.add('is-error'); box.classList.remove('is-loaded'); };
+    if (img.complete) {
+      /* gambar sudah termuat ATAU sudah gagal sebelum JS jalan */
+      (img.naturalWidth > 0) ? ok() : bad();
+    } else {
+      img.addEventListener('load', ok, { once: true });
+      img.addEventListener('error', bad, { once: true });
+    }
+  })();
+
+  /* ---------- Konfigurasi tiket ---------- */
+  const CONFIG = {
+    slug: 'glorifest-festaria-2026',
+    ticketLimit: 10,
+    lowStockThreshold: 25,
+    tickets: [
+      { id: 'presale-4',  name: 'GLORIFEST - FESTARIA - PRESALE 4',  price: 350000, status: 'available', stock: 14, stockMax: 60, tag: true },
+      { id: 'early-bird', name: 'GLORIFEST - FESTARIA - EARLY BIRD', price: 130000, status: 'sold_out' },
+      { id: 'presale-1',  name: 'GLORIFEST - FESTARIA - PRESALE 1',  price: 220000, status: 'sold_out' },
+      { id: 'presale-2',  name: 'GLORIFEST - FESTARIA - PRESALE 2',  price: 280000, status: 'sold_out' },
+      { id: 'presale-3',  name: 'GLORIFEST - FESTARIA - PRESALE 3',  price: 315000, status: 'full_booked' }
+    ]
+  };
+
+  /* Keys TIDAK berubah → kompatibel dengan form.html & pilihan lama */
+  const KEY = { sel: 'gf_selection_v1', items: 'gf_checkout_items_v1', tq: 'gf_total_qty', tp: 'gf_total_price', lang: 'gf_lang' };
+  const DEST = 'form.html';
+  const MAX = CONFIG.ticketLimit;
+  const LOW = CONFIG.lowStockThreshold;
+  const qty = {}, ui = {}, prev = {};
+  CONFIG.tickets.forEach(t => { qty[t.id] = 0; prev[t.id] = 0; });
+
+  const list = $('ticketList'), btn = $('checkoutBtn'), buyLabel = $('buyLabel'),
+        toastEl = $('toast'), barLabel = $('barLabel'), barPrice = $('barPrice'),
+        langBtn = $('langBtn'), langFlag = $('langFlag'), langCode = $('langCode');
+
+  /* ---------- i18n ID / EN ---------- */
+  const I18N = {
+    id: {
+      steps: ['Pilih Kategori', 'Data Pembeli', 'Pembayaran', 'E-Tiket'],
+      heading: 'Kategori Tiket',
+      available: 'Bisa Dibeli', soldOut: 'Sold Out', fullBooked: 'Full Booked',
+      pick: 'Pilih Tiket', unavail: 'Tidak Tersedia', tag: 'Paling Diminati',
+      left: n => 'Sisa ' + n + ' Tiket!',
+      add: 'Tambah tiket', sub: 'Kurangi tiket', qtyLabel: 'Jumlah tiket',
+      stockOf: (a, b) => 'Sisa stok ' + a + ' dari ' + b + ' tiket',
+      subtotal: 'Subtotal',
+      from: 'Harga Mulai dari', total: n => 'Total · ' + n + ' tiket',
+      buy: 'Beli Sekarang', next: 'Lanjutkan',
+      maxToast: n => 'Maksimal ' + n + ' tiket per transaksi',
+      ticker: ['TIKET HAMPIR SOLD OUT', '🔥 STOK TERBATAS', 'AMANKAN TIKETMU SEKARANG'],
+      srTicker: 'Peringatan: tiket hampir sold out. Amankan tiketmu sekarang sebelum kehabisan.',
+      needHelp: 'Butuh bantuan? Hubungi kami:',
+      fWaSub: 'Chat Customer Service',
+      copy: '© 2026 Artatix. Hak Cipta Dilindungi.',
+      langToast: 'Bahasa: Indonesia'
+    },
+    en: {
+      steps: ['Select Category', 'Buyer Details', 'Payment', 'E-Ticket'],
+      heading: 'Ticket Categories',
+      available: 'Available', soldOut: 'Sold Out', fullBooked: 'Full Booked',
+      pick: 'Select Ticket', unavail: 'Unavailable', tag: 'Most Wanted',
+      left: n => 'Only ' + n + ' left!',
+      add: 'Add ticket', sub: 'Remove ticket', qtyLabel: 'Ticket quantity',
+      stockOf: (a, b) => a + ' of ' + b + ' tickets left',
+      subtotal: 'Subtotal',
+      from: 'Price from', total: n => 'Total · ' + n + ' tickets',
+      buy: 'Buy Now', next: 'Continue',
+      maxToast: n => 'Maximum ' + n + ' tickets per transaction',
+      ticker: ['ALMOST SOLD OUT', '🔥 LIMITED STOCK', 'SECURE YOUR TICKET NOW'],
+      srTicker: 'Warning: tickets are almost sold out. Secure yours now before they run out.',
+      needHelp: 'Need help? Contact us:',
+      fWaSub: 'Customer Service Chat',
+      copy: '© 2026 Artatix. All Rights Reserved.',
+      langToast: 'Language: English'
+    }
+  };
+  let LANG = 'id';
+  try { if (localStorage.getItem(KEY.lang) === 'en') LANG = 'en'; } catch (e) {}
+  const T = () => I18N[LANG];
+
+  const nf = new Intl.NumberFormat('id-ID');
+  const fmt = n => 'Rp' + nf.format(Math.round(n));
+  const isAvail = t => t.status === 'available';
+  const statusText = s => (s === 'full_booked' ? T().fullBooked : s === 'sold_out' ? T().soldOut : T().available);
+  const totalQty = () => CONFIG.tickets.reduce((s, t) => s + qty[t.id], 0);
+  const totalPrice = () => CONFIG.tickets.reduce((s, t) => s + qty[t.id] * t.price, 0);
+  const minPrice = () => {
+    const avail = CONFIG.tickets.filter(isAvail).map(t => t.price);
+    const pool = avail.length ? avail : CONFIG.tickets.map(t => t.price);
+    return pool.length ? Math.min(...pool) : 0;
+  };
+
+  const reduceMotion = Boolean(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  let leaving = false;
+
+  let toastTimer = null;
+  const notify = msg => {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2400);
+  };
+
+  /* ---------- Animasi harga (rAF) ---------- */
+  let shownPrice = 0, priceRaf = 0, priceInit = false;
+  const paintPrice = v => { barPrice.textContent = fmt(v); };
+  const setPrice = target => {
+    if (!priceInit || reduceMotion) { shownPrice = target; paintPrice(target); priceInit = true; return; }
+    cancelAnimationFrame(priceRaf);
+    const from = shownPrice, t0 = performance.now(), dur = 320;
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      shownPrice = from + (target - from) * e;
+      paintPrice(shownPrice);
+      if (p < 1) priceRaf = requestAnimationFrame(step);
+      else { shownPrice = target; paintPrice(target); }
+    };
+    priceRaf = requestAnimationFrame(step);
+  };
+
+  const bump = el => {
+    if (reduceMotion || !el) return;
+    el.classList.remove('bump');
+    void el.offsetWidth;
+    el.classList.add('bump');
+  };
+
+  let saveTimer = null;
+  const saveSelection = () => {
+    try { localStorage.setItem(KEY.sel, JSON.stringify({ version: CONFIG.slug, qty })); } catch (e) {}
+  };
+  const queueSave = () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveSelection, 250); };
+
+  /* ---------- Teks kartu (ikut bahasa aktif) ---------- */
+  const paintCard = (t, r) => {
+    r.badge.textContent = statusText(t.status);
+    if (r.tagChip) r.tagChip.textContent = '⭐ ' + T().tag;
+    if (r.hotChip) r.hotChip.textContent = '🔥 ' + T().left(t.stock);
+    if (r.picker) { r.picker.textContent = T().pick; r.picker.setAttribute('aria-label', T().pick + ' — ' + t.name); }
+    if (r.off) r.off.textContent = T().unavail;
+    if (r.minus) r.minus.setAttribute('aria-label', T().sub + ' ' + t.name);
+    if (r.plus) r.plus.setAttribute('aria-label', T().add + ' ' + t.name);
+    if (r.val) r.val.setAttribute('aria-label', T().qtyLabel + ' ' + t.name);
+    if (r.stockbar) r.stockbar.setAttribute('aria-label', T().stockOf(t.stock, t.stockMax));
+  };
+
+  const build = () => {
+    const frag = document.createDocumentFragment();
+    CONFIG.tickets.forEach((t, index) => {
+      const card = document.createElement('article');
+      card.className = 'card' + (isAvail(t) ? ' is-available' : ' is-off');
+      card.dataset.id = t.id;
+      card.style.animationDelay = (80 + index * 70) + 'ms';
+
+      const row = document.createElement('div');
+      row.className = 'badge-row';
+
+      const badge = document.createElement('span');
+      badge.className = 'badge ' + t.status;
+      if (isAvail(t)) {
+        const dot = document.createElement('i');
+        dot.setAttribute('aria-hidden', 'true');
+        badge.appendChild(dot);
+      }
+      badge.appendChild(document.createTextNode(statusText(t.status)));
+      row.appendChild(badge);
+
+      const r = { card, badge };
+
+      if (isAvail(t)) {
+        if (t.tag) {
+          const tag = document.createElement('span');
+          tag.className = 'chip-tag';
+          row.appendChild(tag);
+          r.tagChip = tag;
+        }
+        if (typeof t.stock === 'number' && t.stock <= LOW) {
+          const hot = document.createElement('span');
+          hot.className = 'chip-hot';
+          row.appendChild(hot);
+          r.hotChip = hot;
+        }
+      }
+
+      const inner = document.createElement('div');
+      inner.className = 'tcard';
+
+      const name = document.createElement('h2');
+      name.className = 'tname';
+      name.textContent = t.name;
+
+      const divider = document.createElement('div');
+      divider.className = 'tdivider';
+      const nl = document.createElement('span'); nl.className = 'notch l';
+      const nr = document.createElement('span'); nr.className = 'notch r';
+      divider.append(nl, nr);
+
+      const foot = document.createElement('div');
+      foot.className = 'tfoot';
+
+      const price = document.createElement('span');
+      price.className = 'tprice';
+      price.textContent = fmt(t.price);
+      foot.appendChild(price);
+
+      const zone = document.createElement('div');
+      zone.className = 'qty-zone';
+
+      if (isAvail(t)) {
+        const picker = document.createElement('button');
+        picker.type = 'button'; picker.className = 'picker';
+
+        const stepper = document.createElement('div');
+        stepper.className = 'stepper'; stepper.hidden = true;
+
+        const minus = document.createElement('button');
+        minus.type = 'button'; minus.className = 'step-btn minus';
+        minus.textContent = '−';
+
+        const val = document.createElement('span');
+        val.className = 'qty-val';
+        val.setAttribute('aria-live', 'polite');
+        val.textContent = '0';
+
+        const plus = document.createElement('button');
+        plus.type = 'button'; plus.className = 'step-btn plus';
+        plus.textContent = '+';
+
+        stepper.append(minus, val, plus);
+        zone.append(picker, stepper);
+        Object.assign(r, { picker, stepper, val, plus, minus });
+
+        const subLine = document.createElement('span');
+        subLine.className = 'sub-line'; subLine.hidden = true;
+        foot.appendChild(subLine);
+        r.subLine = subLine;
+      } else {
+        const off = document.createElement('span');
+        off.className = 'off-pill';
+        zone.appendChild(off);
+        r.off = off;
+      }
+
+      foot.appendChild(zone);
+      inner.append(name, divider, foot);
+
+      if (isAvail(t) && typeof t.stock === 'number' && typeof t.stockMax === 'number' && t.stockMax > 0) {
+        const bar = document.createElement('div');
+        bar.className = 'stockbar';
+        bar.setAttribute('role', 'img');
+        const fill = document.createElement('i');
+        fill.style.width = Math.max(6, Math.min(100, Math.round(t.stock / t.stockMax * 100))) + '%';
+        bar.appendChild(fill);
+        inner.appendChild(bar);
+        r.stockbar = bar;
+      }
+
+      card.append(row, inner);
+      frag.appendChild(card);
+      ui[t.id] = r;
+      paintCard(t, r);
+    });
+    list.appendChild(frag);
+  };
+
+  const sync = () => {
+    const total = totalQty();
+    CONFIG.tickets.forEach(t => {
+      const r = ui[t.id];
+      if (!r) return;
+      const n = qty[t.id];
+      if (r.picker && r.stepper) { r.picker.hidden = n > 0; r.stepper.hidden = n === 0; }
+      if (r.val) {
+        r.val.textContent = n;
+        if (prev[t.id] !== n) { bump(r.val); prev[t.id] = n; }
+      }
+      if (r.plus) r.plus.disabled = total >= MAX;
+      r.card.classList.toggle('is-on', n > 0);
+      if (r.subLine) {
+        const show = n > 0;
+        r.subLine.hidden = !show;
+        if (show) r.subLine.textContent = T().subtotal + ': ' + fmt(n * t.price);
+      }
+    });
+    barLabel.textContent = total > 0 ? T().total(total) : T().from;
+    setPrice(total > 0 ? totalPrice() : minPrice());
+    btn.disabled = total === 0 || leaving;
+    buyLabel.textContent = total > 0 ? T().next : T().buy;
+  };
+
+  const save = () => {
+    const items = CONFIG.tickets
+      .filter(t => qty[t.id] > 0)
+      .map(t => ({ id: t.id, nama: t.name, harga: t.price, qty: qty[t.id] }));
+    try {
+      saveSelection();
+      localStorage.setItem(KEY.items, JSON.stringify(items));
+      localStorage.setItem(KEY.tq, String(totalQty()));
+      localStorage.setItem(KEY.tp, String(totalPrice()));
+    } catch (e) {}
+  };
+
+  const restore = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(KEY.sel) || 'null');
+      if (raw && raw.version === CONFIG.slug && raw.qty) {
+        CONFIG.tickets.forEach(t => {
+          const n = parseInt(raw.qty[t.id], 10);
+          qty[t.id] = isAvail(t) && Number.isFinite(n) ? Math.max(0, Math.min(MAX, n)) : 0;
+        });
+        let over = totalQty() - MAX;
+        for (const t of CONFIG.tickets) {
+          if (over <= 0) break;
+          const cut = Math.min(qty[t.id], over);
+          qty[t.id] -= cut;
+          over -= cut;
+        }
+      }
+    } catch (e) {}
+    /* BUGFIX: sinkronkan prev agar animasi bump tidak menyala saat load pertama */
+    CONFIG.tickets.forEach(t => { prev[t.id] = qty[t.id]; });
+  };
+
+  list.addEventListener('click', event => {
+    if (leaving) return;
+    const target = event.target instanceof Element ? event.target.closest('button') : null;
+    if (!target || !list.contains(target)) return;
+    const card = target.closest('.card');
+    if (!card) return;
+    const id = card.dataset.id;
+    if (!(id in qty)) return;
+
+    if (target.classList.contains('picker')) {
+      if (totalQty() >= MAX) { notify(T().maxToast(MAX)); return; }
+      qty[id] = 1;
+      sync(); queueSave();
+      if (ui[id].minus) ui[id].minus.focus({ preventScroll: true });
+    } else if (target.classList.contains('plus')) {
+      if (totalQty() >= MAX) { notify(T().maxToast(MAX)); return; }
+      qty[id]++;
+      sync(); queueSave();
+    } else if (target.classList.contains('minus')) {
+      if (qty[id] > 0) {
+        qty[id]--;
+        const toZero = qty[id] === 0;
+        sync(); queueSave();
+        if (toZero && ui[id].picker) ui[id].picker.focus({ preventScroll: true });
+      }
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    if (leaving || totalQty() === 0) return;
+    save();
+    leaving = true;
+    btn.disabled = true;
+    document.body.classList.add('leaving');
+    window.location.assign(DEST);
+  });
+
+  window.addEventListener('pageshow', event => {
+    if (event.persisted && leaving) {
+      leaving = false;
+      document.body.classList.remove('leaving');
+      sync();
+    }
+  });
+
+  /* ---------- Toggle bahasa ID ⇄ EN ---------- */
+  function applyLang(lang, silent) {
+    LANG = I18N[lang] ? lang : 'id';
+    document.documentElement.lang = LANG;
+    try { localStorage.setItem(KEY.lang, LANG); } catch (e) {}
+    $$('.s-label').forEach(el => {
+      const i = +el.dataset.step;
+      if (T().steps[i]) el.textContent = T().steps[i];
+    });
+    const h = document.querySelector('[data-i18n-heading]');
+    if (h) h.textContent = T().heading;
+    $$('[data-tick]').forEach((el, i) => { el.textContent = T().ticker[i % 3]; });
+    const sr = $('tickerSr'); if (sr) sr.textContent = T().srTicker;
+    const fh = document.querySelector('[data-f-help]'); if (fh) fh.textContent = T().needHelp;
+    const fw = document.querySelector('[data-f-wa]'); if (fw) fw.textContent = T().fWaSub;
+    const fc = document.querySelector('[data-f-copy]'); if (fc) fc.textContent = T().copy;
+    langFlag.classList.toggle('flag--en', LANG === 'en');
+    langCode.textContent = LANG.toUpperCase();
+    langBtn.setAttribute('aria-label', LANG === 'en' ? 'Switch to Indonesian' : 'Ganti ke English');
+    CONFIG.tickets.forEach(t => { const r = ui[t.id]; if (r) paintCard(t, r); });
+    sync();
+    if (!silent) toast(T().langToast);
+  }
+  langBtn.addEventListener('click', () => applyLang(LANG === 'id' ? 'en' : 'id'));
+
+  /* ---------- Init ---------- */
+  restore();
+  build();
+  applyLang(LANG, true);
+})();
+</script>
+</body>
+</html>
